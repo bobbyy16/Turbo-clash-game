@@ -6,28 +6,32 @@ const TurboClashDerby = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [diceRolling, setDiceRolling] = useState(false);
+  // https://turbo-clash-game.onrender.com/
 
   const startGame = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:3001/api/game/start", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          car1: {
-            name: "Thunderbolt",
-            health: 50,
-            attackStrength: 10,
-            defenseStrength: 5,
-          },
-          car2: {
-            name: "Iron Crusher",
-            health: 100,
-            attackStrength: 5,
-            defenseStrength: 10,
-          },
-        }),
-      });
+      const response = await fetch(
+        "https://turbo-clash-game.onrender.com/api/game/start",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            car1: {
+              name: "Thunderbolt",
+              health: 50,
+              attackStrength: 10,
+              defenseStrength: 5,
+            },
+            car2: {
+              name: "Iron Crusher",
+              health: 100,
+              attackStrength: 5,
+              defenseStrength: 10,
+            },
+          }),
+        }
+      );
       const data = await response.json();
       setGameState(data);
     } catch (err) {
@@ -43,9 +47,12 @@ const TurboClashDerby = () => {
       setDiceRolling(true);
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      const response = await fetch("http://localhost:3001/api/game/turn", {
-        method: "POST",
-      });
+      const response = await fetch(
+        "https://turbo-clash-game.onrender.com/api/game/turn",
+        {
+          method: "POST",
+        }
+      );
       const data = await response.json();
       setGameState(data.gameStatus);
 
