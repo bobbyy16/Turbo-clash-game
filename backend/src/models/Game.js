@@ -1,4 +1,4 @@
-const carModel = require("./car");
+const carModel = require("./Car");
 function createGame(car1, car2, car3) {
   return {
     car1,
