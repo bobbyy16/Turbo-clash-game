@@ -1,8 +1,8 @@
 // src/app.js
 const express = require("express");
 const cors = require("cors");
-const { createCar } = require("./models/car");
-const { createGame, executeTurn, getGameStatus } = require("./models/game");
+const { createCar } = require("./models/Car");
+const { createGame, executeTurn, getGameStatus } = require("./models/Game");
 
 const app = express();
 
